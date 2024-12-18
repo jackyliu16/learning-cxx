@@ -40,6 +40,7 @@
       packages = with pkgs; [
         # Development Tools
         nh
+	zellij
 	ripgrep
 
         # Development time dependencies
