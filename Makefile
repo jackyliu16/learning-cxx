@@ -11,6 +11,9 @@ run:
 	xmake run learn $(wordlist 2,99,$(MAKECMDGOALS))
 	# 由于不知名原因会导致无法正常检出入参
 
+vim:
+	nix run github:jordanisaacs/neovim-flake --no-write-lock-file .
+
 ###################
 # Nix Instruction #
 ###################
