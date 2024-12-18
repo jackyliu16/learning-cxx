@@ -14,6 +14,9 @@ run:
 vim:
 	nix run github:jordanisaacs/neovim-flake --no-write-lock-file .
 
+dev: 
+	nix develop .
+
 ###################
 # Nix Instruction #
 ###################
