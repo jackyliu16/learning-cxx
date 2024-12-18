@@ -1,0 +1,2 @@
+all:
+	xmake --root
