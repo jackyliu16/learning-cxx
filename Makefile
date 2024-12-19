@@ -10,9 +10,16 @@ run:
 	# xmake --root run learn $(wordlist 2,99,$(MAKECMDGOALS))
 	xmake run learn $(wordlist 2,99,$(MAKECMDGOALS))
 	# 由于不知名原因会导致无法正常检出入参
-
 vim:
+	nix run nixpkgs#lunarvim .
+vim0:
 	nix run github:jordanisaacs/neovim-flake --no-write-lock-file .
+vim1:
+	nix run "github:nix-community/kickstart-nix.nvim"
+vim2:
+	nix run github:gvolpe/neovim-flake .
+vim3:
+	nix run codeberg:samuelsung/neovim-flake#nvim .
 
 dev: 
 	nix develop .
