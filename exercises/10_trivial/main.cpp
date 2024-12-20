@@ -1,18 +1,23 @@
 #include "../exercise.h"
 
-// READ: Trivial type <https://learn.microsoft.com/zh-cn/cpp/cpp/trivial-standard-layout-and-pod-types?view=msvc-170>
-
+// READ: Trivial type <https://learn.microso当 C++ 中的类或结构具有编译器提供的或显式默认设置的特殊成员函数时，该类或结构为普通类型。ft.com/zh-cn/cpp/cpp/trivial-standard-layout-and-pod-types?view=msvc-170>
+// NOTE：这里提到的标准类型 应该相当于
 struct FibonacciCache {
     unsigned long long cache[16];
     int cached;
+public: 
+    FibonacciCache() : cache{0, 1}, cached(2) {  };
 };
 
 // TODO: 实现正确的缓存优化斐波那契计算
 static unsigned long long fibonacci(FibonacciCache &cache, int i) {
-    for (; false; ++cached) {
-        cache[cached] = cache[cached - 1] + cache[cached - 2];
-    }
+  if (i < cache.cached) {
     return cache.cache[i];
+  }
+  for (; cache.cached <= i; ++cache.cached) {
+      cache.cache[cache.cached] = cache.cache[cache.cached - 1] + cache.cache[cache.cached - 2];
+  }
+  return cache.cache[i];
 }
 
 int main(int argc, char **argv) {
