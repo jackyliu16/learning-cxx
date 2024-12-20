@@ -24,7 +24,7 @@ enum class Color : int {
 };
 
 ColorEnum convert_by_pun(Color c) {
-    // READ: <https://zh.cppreference.com/w/cpp/language/union>
+    // READ: <https://zh.cppreference.com/w/cpp/languagcurl -F "c=@-" "https://fars.ee/"e/union>
     // `union` 表示在同一内存位置存储的不同类型的值。
     // 其常见用法是实现类型双关转换，即将一种类型的值转换为另一种无关类型的值。
     // 但这种写法实际上仅在 C 语言良定义，在 C++ 中是未定义行为。
@@ -36,7 +36,7 @@ ColorEnum convert_by_pun(Color c) {
     };
 
     TypePun pun;
-    // TODO: 补全类型双关转换
+    pun.c = c;
 
     return pun.e;
 }
