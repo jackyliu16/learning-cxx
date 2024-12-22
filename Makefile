@@ -6,9 +6,9 @@
 all:
 	xmake --root
 
-run:
-	# xmake --root run learn $(wordlist 2,99,$(MAKECMDGOALS))
-	xmake run learn $(wordlist 2,99,$(MAKECMDGOALS))
+run test:
+	xmake run learn $(test)
+
 vim:
 	nix run nixpkgs#lunarvim .
 vim0:
