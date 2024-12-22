@@ -40,19 +40,19 @@
       packages = with pkgs; [
         # Development Tools
         nh
-	zellij
-	ripgrep
+				zellij
+				ripgrep
 
         # Development time dependencies
         # gtest
 
         # Build time and Run time dependencies
-	gcc
-	gdb
-	cmake
+				gcc13
+				gdb
+				cmake
         xmake
-	gnumake
-	libclang
+				gnumake
+				libclang
       ];
 
       # Setting up the environment variables you need during
@@ -60,31 +60,31 @@
       shellHook = let
         icon = "f121";
       in ''
-	alias ga="git add"
-	alias gc="git commit"
-	alias gca="git commit --amend"
-	alias gcm="git commit -m"
-	alias gp="git push"
-	alias gst="git status"
-	alias grhh="git reset --hard"
-	alias zj="zellij"
+				alias ga="git add"
+				alias gc="git commit"
+				alias gca="git commit --amend"
+				alias gcm="git commit -m"
+				alias gp="git push"
+				alias gst="git status"
+				alias grhh="git reset --hard"
+				alias zj="zellij"
 
-        export PS1="$(echo -e '\u${icon}') {\[$(tput sgr0)\]\[\033[38;5;228m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]} (${name}) \\$ \[$(tput sgr0)\]"
-	export XMAKE_ROOT=y
-	
-	# Unset environment variables, required for xmake to find
-	# the linker/compiler that we provide here
-	unset CC
-	unset CXX
-	unset LD
-	unset AR
-	unset AS
-	unset RANLIB
-	unset STRIP
-	unset CFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	echo "C++ development environment loaded"
+        			export PS1="$(echo -e '\u${icon}') {\[$(tput sgr0)\]\[\033[38;5;228m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]} (${name}) \\$ \[$(tput sgr0)\]"
+				export XMAKE_ROOT=y
+				
+				# Unset environment variables, required for xmake to find
+				# the linker/compiler that we provide here
+				unset CC
+				unset CXX
+				unset LD
+				unset AR
+				unset AS
+				unset RANLIB
+				unset STRIP
+				unset CFLAGS
+				unset CXXFLAGS
+				unset LDFLAGS
+				echo "C++ development environment loaded"
       '';
     };
   });
