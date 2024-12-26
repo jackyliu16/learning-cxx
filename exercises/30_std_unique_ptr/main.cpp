@@ -1,6 +1,7 @@
 ﻿#include "../exercise.h"
 #include <memory>
 #include <string>
+#include <cstring>
 #include <vector>
 
 // READ: `std::unique_ptr` <https://zh.cppreference.com/w/cpp/memory/unique_ptr>
@@ -15,26 +16,26 @@ public:
         _records.push_back(record);
     }
 
-    ~Resource() {
+    ~Resource() { // NOTE: 当销毁 Resource 的时候，对应 record 数据会被添加到 RECORDS
         RECORDS.push_back(_records);
     }
 };
 
 using Unique = std::unique_ptr<Resource>;
-Unique reset(Unique ptr) {
-    if (ptr) {
+Unique reset(Unique ptr) { // NOTE: 创建一个新的 Resource 对象并返回。
+    if (ptr) {             // 如果传入的替换被管理对象的新指针有效，则记录 r
         ptr->record('r');
     }
     return std::make_unique<Resource>();
 }
-Unique drop(Unique ptr) {
-    if (ptr) {
+Unique drop(Unique ptr) { 
+    if (ptr) { // NOTE: 如果传入指针有效，则记录 d，返回 nullptr (生命周期结束？)
         ptr->record('d');
     }
     return nullptr;
 }
 Unique forward(Unique ptr) {
-    if (ptr) {
+    if (ptr) { // NOTE: 如果传入指针有效，则记录 f
         ptr->record('f');
     }
     return ptr;
@@ -56,9 +57,8 @@ int main(int argc, char **argv) {
 
     std::vector<const char *> answers[]{
         {"fd"},
-        // TODO: 分析 problems[1] 中资源的生命周期，将记录填入 `std::vector`
-        {"", "", "", "", "", "", "", ""},
-        {"", "", "", "", "", "", "", ""},
+        {"d", "ffr"}, // 外围的先析构
+        {"d", "d", "r"},
     };
 
     // ---- 不要修改以下代码 ----
