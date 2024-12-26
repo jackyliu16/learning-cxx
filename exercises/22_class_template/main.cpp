@@ -43,9 +43,9 @@ struct Tensor4D {
                             l3 * shape[3] + 
                             l4  
                         ] += others.data [ 
-                            (others.shape[0] == 1 ? 0 : l1) * shape[1] * shape[2] * shape[3] + 
-                            (others.shape[1] == 1 ? 0 : l2) * shape[2] * shape[3] + 
-                            (others.shape[2] == 1 ? 0 : l3) * shape[3] + 
+                            (others.shape[0] == 1 ? 0 : l1) * others.shape[1] * others.shape[2] * others.shape[3] + 
+                            (others.shape[1] == 1 ? 0 : l2) * others.shape[2] * others.shape[3] + 
+                            (others.shape[2] == 1 ? 0 : l3) * others.shape[3] + 
                             (others.shape[3] == 1 ? 0 : l4) 
                         ];
                     }
